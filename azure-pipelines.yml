@@ -19,7 +19,13 @@ steps:
     node --version
   displayName: 'Display npm version'
 
-- script: sudo npm install -g npm
+# - script: sudo npm install -g npm
+#   displayName: 'Upgrade npm version'
+
+- task: Npm@1
+  inputs:
+    command: custom
+    customCommand: 'install npm@latest'
   displayName: 'Upgrade npm version'
 
 - script: |
