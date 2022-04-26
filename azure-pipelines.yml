@@ -25,7 +25,7 @@ steps:
 - task: Npm@1
   inputs:
     command: custom
-    customCommand: 'install npm@latest'
+    customCommand: 'install -g npm@latest'
   displayName: 'Upgrade npm version'
 
 - script: |
