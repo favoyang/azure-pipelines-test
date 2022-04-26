@@ -1,0 +1,34 @@
+# OpenUPM azure pipelines
+name: azure-pipelines-test
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm --version
+    node --version
+  displayName: 'Display npm version'
+
+- script: sudo npm install -g npm
+  displayName: 'Upgrade npm version'
+
+- script: |
+    npm --version
+    node --version
+  displayName: 'Display npm version'
+
+- task: Npm@1
+  inputs:
+    command: custom
+    customCommand: 'pack --dry-run'
+  displayName: 'Npm pack dry run'
